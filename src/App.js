@@ -1,7 +1,9 @@
-import logo from './logo.svg';
+import logo from './logo.png';
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import Web3 from 'web3';
+import Input from './components/Input';
+import Button from './components/Button';
 
 
 function App() {
@@ -157,29 +159,24 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <input
+       <img src={logo} alt="logo" className='w-80'/>
+        <Input
           type="text"
           value={name}
           onChange={handleInputChange}
           placeholder="Enter your name  to add it to X"
         />
-        <button onClick={sendDataToBackend}>Submit To X</button> 
+        <Button onClick={sendDataToBackend} children="Submit To X"/>
 
         {isConnected ? (
 	      <p>Connected</p>
 	       ) : (
-	      <button onClick={connectWallet}>Connect Wallet</button>
+	      <Button onClick={connectWallet} children={"Connect Wallet"}/>
 	        )}
       
-      <label>Name:</label>
-	    <input type="text" value={namebc} onChange={(e) => setNamebc(e.target.value)} />
-	    <label htmlFor="amount">Pass:</label>
-	    <input type="text" value={passbc} onChange={(e) => setPassbc(e.target.value)} />
-	    <button onClick={addCredential}>Submit To Y</button>
+      <Input  type="text" value={namebc} onChange={(e) => setNamebc(e.target.value)} placeholder="Enter your name"/>
+	    <Input type="text" value={passbc} onChange={(e) => setPassbc(e.target.value)} placeholder="enter your password"/>
+	    <Button onClick={addCredential} children="Submit To Y"/>
       </header>
     </div>
   );
